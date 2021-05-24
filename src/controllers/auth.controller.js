@@ -1,17 +1,15 @@
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const db = require("../models");
+const userService = require("../services/user.service")
 const dbconfig = require("../config/auth.config");
-
-const User = db.user;
 
 async function register(req, res) {
     try {
-        const user = await User.create({
+        const user = await userService.createUser({
             username: req.body.username,
             email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 8)
+            password: req.body.password
         })
+
         res.send({
             message: "User was registered succesfully!"
         })
@@ -25,10 +23,8 @@ async function register(req, res) {
 async function login(req, res) {
     try {
         // Check if user exists
-        const user = await User.findOne({
-            where: {
-                username: req.body.username,
-            }
+        const user = await userService.find({ 
+            username: req.body.username 
         });
         
         // If user does not exists, return with status code 404
