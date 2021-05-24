@@ -1,9 +1,7 @@
-const config = require("../config/db.config");
-
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "lnelkvnwovnw0evoweinvowenv",
+    PASSWORD: "",
     DB: "disneydb",
     dialect: "mysql",
     pool: {
@@ -12,4 +10,5 @@ module.exports = {
         aquire: 30000,
         idle: 10000,
     }
-};
+};fig");
+

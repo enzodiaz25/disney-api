@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./models")
-const routes = require("./routes");
+const routes = require("./src/routes");
 
 // Create app
 const app = express();
